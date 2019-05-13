@@ -2,6 +2,8 @@
 
 remote_file "#{Chef::Config[:file_cache_path]}/sumocollector.deb" do
   source node['sumologic']['collectorDEBUrl']
+  retries 5
+  retry_delay 2
 end
 
 dpkg_package 'sumocollector' do
